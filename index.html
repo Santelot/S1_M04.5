@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M04.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">
+            <span>🎯 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Saludo y bienvenida a la misión.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 2 "Bienvenida".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hola, Genios. Hoy seguimos con TinkerCAD. Esta vez diseñaremos un cohete para llevar su árbol a Marte.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 3 "¿Cómo Están?".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Si ya están listos para despegar, agiten ambas manos. Si necesitan un poco de impulso, crucen los brazos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 4 "Gracias por Asistir".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Como siempre, juntemos nuestras manos en agradecimiento por estar aquí y tener la oportunidad de seguir desarrollando nuestras habilidades. ¡Gracias por asistir a esta misión, Genios!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 5 "Objetivos de la Misión".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy tenemos dos objetivos: 1.- Utilizar herramientas avanzadas de TinkerCAD. 2.- Diseñar un cohete espacial que sea funcional y visualmente atractivo.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2 (4 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>🔄 Actividad 2: State Change (4 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Ejercicio de relajación y concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 6 "Manos Mágicas".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, antes de empezar a diseñar, vamos a hacer un breve ejercicio para relajarnos y mejorar la concentración. Froten sus manos rápidamente hasta que se sientan calientes.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 7.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora, cierren los ojos y coloquen sus manos calientes sobre ellos. Vamos a mantener esta posición durante un minuto para relajar nuestra vista.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 8 con un cronómetro de 1 minuto.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 9 "Reflexión Final".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Muy bien, ahora que hemos relajado la vista, estamos listos para concentrarnos mejor en el diseño. Vamos a aplicar toda esa concentración en nuestro trabajo.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 3 (2 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>👥 Actividad 3: Team Gnius (2 pasos)</span>
+            <span>⏰ Tiempo: 1.5 minutos</span>
+        </div>
+        <div class="subtitle">Continuar trabajando en las mismas parejas de la clase pasada.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 10 "Team Gnius".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, hoy vamos a continuar trabajando en las mismas parejas que formaron la clase pasada. Reúnanse con su compañero y prepárense para comenzar.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 11 con un cronómetro de 1 minuto.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 4 (5 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🚀 Actividad 4: Challenge (5 pasos)</span>
+            <span>⏰ Tiempo: 37.5 minutos</span>
+        </div>
+        <div class="subtitle">Diseñar y modelar un cohete espacial en TinkerCAD.</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 12 "Challenge".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy su desafío será diseñar y modelar un cohete espacial en TinkerCAD, con la capacidad de transportar el árbol que crearon la clase pasada. Utilicen las herramientas de modelado que ya conocen para crear una estructura aerodinámica, funcional y atractiva. Van a tener 30 minutos para crear su diseño.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (30 minutos): Proyectar Diapositiva 13 con un cronómetro de 30 minutos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (5 minutos): Proyectar Diapositiva 14 "Galería de Cohetes".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Tiempo! Es momento de detenerse y ver lo que han logrado. Estoy seguro de que cada cohete es único y refleja su creatividad. Vamos a tomarnos 5 minutos para revisar los cohetes de sus compañeros. Dejen en sus lugares sus computadoras y pónganse de pie, vamos a caminar por nuestra galería de cohetes.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 15 "Objetivos Alcanzados".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy hemos avanzado en nuestros dos objetivos: 1.- Utilizar herramientas avanzadas de TinkerCAD. 2.- Diseñar un cohete espacial funcional y visualmente atractivo. ¡Gran trabajo, Genios!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar Diapositiva 16 "You've Got Mon-e".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Felicidades, Genios. Han completado esta misión y ahora son merecedores de su Mon-e. ¡Buen trabajo a todos!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 5 (1 paso) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🏆 Actividad 5: Honor The Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 1 minuto</span>
+        </div>
+        <div class="subtitle">Recoger el área de trabajo y despedida.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 17 "Honor The Dojo".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, antes de irnos, vamos a recoger nuestras áreas de trabajo. Recuerden siempre mantener en orden el espacio donde creamos grandes ideas. ¡Gracias por su esfuerzo y participación hoy! Si les gustó la clase, levanten sus manos y agítenlas como si estuvieran despegando en su cohete.</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
